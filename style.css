@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    background-color: lightgrey;
+}
+
+.intro{
+    margin-top: 150px;
+}
+
+span{
+    margin : 20px; 
+}
+
+button{
+    margin: 30px 40px;
+}

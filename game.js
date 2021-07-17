@@ -1,3 +1,14 @@
+const button = document.querySelectorAll("button"); 
+// console.log("hello world"); 
+button.forEach((x)=>{
+	x.addEventListener("click",(e)=>{
+		game(e.target.alt); 
+	})
+})
+
+
+let playerCount=0,computerCount=0; 
+
 function computerChoice(){
 
 	let choice = Math.floor(Math.random()*3); 
@@ -19,16 +30,21 @@ function gameResult(playersChoice, computerC){
 	return "computer"; 
 }
 
-function game(){
-	let playerCount=0,computerCount=0; 
-	while(playerCount!=5 || computerCount!=5){
-
-		let playerChoice = prompt("Enter your choic"); 
+function game(playersChoice){
 		let computerC = computerChoice(); 
 		let result = gameResult(playersChoice,computerC); 
+		if(result=="tie"){
+			document.querySelector(".result").textContent = "TIE"; 	
+		} 
+		else if(result =="player"){
+			document.querySelector(".result").textContent = "You Won"; 
+			playerCount+=1; }
+		else{ 
+			document.querySelector(".result").textContent = "You Lost"; 			
+			computerCount+=1; 
+		}
+		document.querySelector(".player-score").textContent = "Player : "+playerCount; 
+		document.querySelector(".computer-score").textContent = "Computer : "+computerCount; 
+		document.querySelector(".cc").textContent = "Computer choice : " +computerC;
 
-		if(result=="tie")continue; 
-		else if(result =="player")playerCount+=1; 
-		else computerCount+=1; 
 	}
-}
